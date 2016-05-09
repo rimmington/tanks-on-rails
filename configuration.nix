@@ -1,9 +1,9 @@
 {config, pkgs, system, ...}:
 let
-  customPkgs = import /vagrant/pkgs { inherit pkgs; };
-  rails-test = customPkgs.callPackage /vagrant/blog/service.nix { bindAddress = "192.168.100.65"; };
+  disquick = import /vagrant/disquick { inherit pkgs; };
+  rails-test = disquick.callPackage /vagrant/blog/service.nix { bindAddress = "192.168.100.65"; };
 in {
-  environment.systemPackages = with pkgs; with customPkgs; [ git which disnix disquick ];
+  environment.systemPackages = with pkgs; [ git which disquick.disnix disquick.disquick ];
   services.nixosManual.enable = false;
 
   nix.binaryCaches = [
