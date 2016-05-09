@@ -3,10 +3,10 @@ set -eu
 
 export NIX_PATH=nixpkgs=https://github.com/rimmington/nixpkgs/archive/934a460fd2fdd7667fa2928275aa7e0cbcab5feb.tar.gz
 
-cloneDir="/usr/local/share/tanks-on-rails"
-git clone --depth 1 https://github.com/rimmington/tanks-on-rails $cloneDir
-nix-env -i -f $cloneDir/pkgs -A disnixDebian
-disnixOut=$(nix-env -qa --out-path --no-name -f $cloneDir/pkgs -A disnixDebian)
+cloneDir="/usr/local/share/disquick"
+git clone --depth 1 https://github.com/rimmington/disquick $cloneDir
+nix-env -i -f $cloneDir -A disnixDebian
+disnixOut=$(nix-env -qa --out-path --no-name -f $cloneDir -A disnixDebian)
 
 groupadd disnix
 usermod -aG disnix pi
